@@ -16,15 +16,15 @@ namespace JC.Samples.MailKitConsoleDemo
 		public void SendEmail()
 		{
 			var message = new MimeMessage();
-			message.From.Add(new MailboxAddress("Sender Name", "sender@yourdomain.com"));
-			message.To.Add(new MailboxAddress("Recipient Name", "recipient@theirdomain.com"));
-			message.Subject = "MailKit Test";
+			message.From.Add(new MailboxAddress("Linh Huynh", "lhuynh@okuma.com"));
+			message.To.Add(new MailboxAddress("hulinning2", "hulinning2@yahoo.com"));
+			message.Subject = "MailKit Test " + System.DateTime.Now  ;
 			message.Body    = new TextPart("plain") { Text = "Hi from MailKit!" };
 
 			using (var client = new SmtpClient())
 			{
-				client.Connect("mail.yoursmtpservice.com", 587);
-				client.Authenticate("your_username", "your_password");
+				client.Connect("us-smtp-outbound-1.mimecast.com", 587);
+				client.Authenticate("ENGSMTP@okuma.com", "Cr38t!ve");
 				client.Send(message);
 				client.Disconnect(true);
 			}
